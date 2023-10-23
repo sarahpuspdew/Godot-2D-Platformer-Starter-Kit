@@ -9,7 +9,6 @@ var jump_pressed : bool = false
 
 
 func enter():
-	player.velocity = Vector2.ZERO
 	playback.travel("Wall_Slide")
 
 
