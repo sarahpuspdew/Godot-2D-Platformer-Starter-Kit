@@ -39,6 +39,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func _input(event : InputEvent):
+	if event.is_action_pressed("move_down"):
+		position.y += 1
+
+
 func get_direction():
 	direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if direction != 0:
