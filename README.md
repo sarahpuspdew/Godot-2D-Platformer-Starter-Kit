@@ -4,4 +4,4 @@
 
 ### Assets
 
-The demo projects use the very nice [Pixel Adventure 1](https://pixelfrog-assets.itch.io/pixel-adventure-1) and [Pixel Adventure 2](https://pixelfrog-assets.itch.io/pixel-adventure-2) assets by [Pixel Frog](https://pixelfrog-assets.itch.io/). Thanks for making them available in the public domain!
+This project use assets from [Pixel Adventure 1](https://pixelfrog-assets.itch.io/pixel-adventure-1) and [Pixel Adventure 2](https://pixelfrog-assets.itch.io/pixel-adventure-2) by [Pixel Frog](https://pixelfrog-assets.itch.io/).
