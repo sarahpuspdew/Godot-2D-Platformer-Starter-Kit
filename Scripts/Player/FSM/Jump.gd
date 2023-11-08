@@ -4,6 +4,7 @@ extends PlayerState
 @export var double_jump_state : PlayerState
 @export var dash_state : PlayerState
 @export var fall_state : PlayerState
+@export var hit_state : PlayerState
 
 var jump_pressed : bool = false
 var dash_pressed : bool = false
@@ -39,3 +40,7 @@ func state_input(event : InputEvent):
 func exit():
 	jump_pressed = false
 	dash_pressed = false
+
+
+func _on_health_component_died():
+	next_state = hit_state

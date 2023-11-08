@@ -4,6 +4,7 @@ extends PlayerState
 @export var run_state : PlayerState
 @export var jump_state : PlayerState
 @export var dash_state : PlayerState
+@export var hit_state : PlayerState
 
 
 func enter():
@@ -26,3 +27,7 @@ func state_input(event : InputEvent):
 
 func exit():
 	player.current_speed = 0
+
+
+func _on_health_component_died():
+	next_state = hit_state

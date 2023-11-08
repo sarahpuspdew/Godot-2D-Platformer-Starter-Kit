@@ -5,6 +5,7 @@ extends PlayerState
 # state
 @export var run_state : PlayerState
 @export var fall_state : PlayerState
+@export var hit_state : PlayerState
 
 var dash_start_time : float
 var elapsed_dash_time : float
@@ -40,3 +41,7 @@ func exit():
 		player.can_dash = false
 	
 	sprite.modulate = Color.WHITE
+
+
+func _on_health_component_died():
+	next_state = hit_state

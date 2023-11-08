@@ -5,6 +5,7 @@ extends PlayerState
 @export var jump_state : PlayerState
 @export var dash_state : PlayerState
 @export var fall_state : PlayerState
+@export var hit_state : PlayerState
 
 var can_jump : bool = true
 var jumping : bool = false
@@ -48,3 +49,7 @@ func exit():
 func _on_coyote_timer_timeout():
 	can_jump = false
 	coyote = false
+
+
+func _on_health_component_died():
+	next_state = hit_state

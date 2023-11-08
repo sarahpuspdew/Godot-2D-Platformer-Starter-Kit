@@ -42,6 +42,17 @@ dash={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Traps"
+2d_physics/layer_5="Player Hurtbox"
+2d_physics/layer_6="Enemies Hurtbox"
+2d_physics/layer_7="Enemies Hitbox"
+2d_physics/layer_8="Traps Hitbox"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
