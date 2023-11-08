@@ -13,7 +13,7 @@ config_version=5
 config/name="[Project] 2D Platformer Starter Kit"
 run/main_scene="res://Scenes/World/Main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Pixel Adventure/Main Characters/Ninja Frog/Fall (32x32).png"
 
 [input]
 
