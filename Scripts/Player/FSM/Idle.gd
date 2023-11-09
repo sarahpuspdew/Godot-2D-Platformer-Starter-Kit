@@ -3,6 +3,7 @@ extends PlayerState
 # state
 @export var run_state : PlayerState
 @export var jump_state : PlayerState
+@export var fall_state : PlayerState
 @export var dash_state : PlayerState
 @export var hit_state : PlayerState
 
@@ -12,6 +13,12 @@ func enter():
 
 
 func state_physics_process(delta):
+	if not player.is_on_floor():
+		if player.was_platform_jumped:
+			next_state = jump_state
+		else:
+			next_state = fall_state
+	
 	if player.direction != 0:
 		next_state = run_state
 	

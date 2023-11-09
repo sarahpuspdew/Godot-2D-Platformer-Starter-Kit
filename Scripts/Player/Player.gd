@@ -23,6 +23,7 @@ var can_dash : bool = true
 @export var double_jump_velocity : float
 @export var wall_jump_velocity : float
 var has_double_jumped : bool = false
+var was_platform_jumped : bool = false
 
 # wall
 @export var wall_slide_speed : float

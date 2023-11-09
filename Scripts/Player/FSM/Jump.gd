@@ -12,7 +12,10 @@ var dash_pressed : bool = false
 
 func enter():
 	playback.travel("Jump")
-	player.jump(player.jump_velocity)
+	if player.was_platform_jumped:
+		player.was_platform_jumped = false
+	else:
+		player.jump(player.jump_velocity)
 
 
 func state_physics_process(delta):

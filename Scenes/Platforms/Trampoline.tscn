@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://2rl6fv15m8m2"]
+
+[ext_resource type="Script" path="res://Scripts/Platforms/Trampoline.gd" id="1_amfee"]
+[ext_resource type="Texture2D" uid="uid://bb24komylg5km" path="res://Assets/Pixel Adventure/Traps/Trampoline/Idle.png" id="1_b2iga"]
+[ext_resource type="Texture2D" uid="uid://bd74pk88gb5mi" path="res://Assets/Pixel Adventure/Traps/Trampoline/Jump (28x28).png" id="1_k6erx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwd2b"]
+size = Vector2(7, 6)
+
+[sub_resource type="Animation" id="Animation_stb6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p1eef"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_b2iga")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g0ueo"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_k6erx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2h0v"]
+_data = {
+"RESET": SubResource("Animation_stb6f"),
+"idle": SubResource("Animation_p1eef"),
+"jump": SubResource("Animation_g0ueo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd3fa"]
+size = Vector2(23, 5)
+
+[node name="Trampoline" type="StaticBody2D"]
+collision_layer = 512
+collision_mask = 2
+script = ExtResource("1_amfee")
+force = -500.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b2iga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_cwd2b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_c2h0v")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_dd3fa")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

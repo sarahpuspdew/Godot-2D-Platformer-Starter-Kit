@@ -435,6 +435,7 @@ graph_offset = Vector2(-1, -40)
 size = Vector2(19, 24)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
 collision_layer = 2
 collision_mask = 525
 script = ExtResource("1_n5cbr")
@@ -452,8 +453,8 @@ wall_jump_pushback = 400.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qd8jc")
-hframes = 7
+texture = ExtResource("1_ola4f")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4)
@@ -474,10 +475,11 @@ player = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("run_state", "jump_state", "dash_state", "hit_state")]
+[node name="Idle" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("run_state", "jump_state", "fall_state", "dash_state", "hit_state")]
 script = ExtResource("10_fe2jq")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
 dash_state = NodePath("../Dash")
 hit_state = NodePath("../Hit")
 
