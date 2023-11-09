@@ -1,5 +1,4 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhtjpo566g3s0"]
-[gd_scene load_steps=7 format=3 uid="uid://bhtjpo566g3s0"]
 
 [ext_resource type="Texture2D" uid="uid://03ri5rww0uof" path="res://Assets/Pixel Adventure/Terrain/Terrain (16x16).png" id="1_6a0ks"]
 [ext_resource type="Script" path="res://Scripts/Player/CameraFollow.gd" id="1_44thy"]
