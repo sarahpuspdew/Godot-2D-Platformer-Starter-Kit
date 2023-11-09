@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bps3u4x5kvomw"]
+
+[ext_resource type="Texture2D" uid="uid://ddpbwwb6ch7mo" path="res://Assets/Pixel Adventure/Traps/Spikes/Idle.png" id="1_th3pu"]
+[ext_resource type="PackedScene" uid="uid://c81eta1fdj8r2" path="res://Scenes/Components/HitboxComponent.tscn" id="2_pa2ql"]
+
+[node name="Spike" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_th3pu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, 8, -8, 6, -5, 1, 4, 1, 7, 6, 7, 8)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_pa2ql")]
+collision_layer = 128
+collision_mask = 17
+damage = 10.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+polygon = PackedVector2Array(-9, 8, -8, 5, -5, 0, 4, 0, 7, 5, 8, 8)

@@ -3,6 +3,7 @@ extends PlayerState
 # state
 @export var dash_state : PlayerState
 @export var fall_state : PlayerState
+@export var hit_state : PlayerState
 
 var dash_pressed : bool = false
 
@@ -34,3 +35,7 @@ func state_input(event : InputEvent):
 
 func exit():
 	dash_pressed = false
+
+
+func _on_health_component_died():
+	next_state = hit_state

@@ -1,8 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhtjpo566g3s0"]
+[gd_scene load_steps=7 format=3 uid="uid://bhtjpo566g3s0"]
 
 [ext_resource type="Texture2D" uid="uid://03ri5rww0uof" path="res://Assets/Pixel Adventure/Terrain/Terrain (16x16).png" id="1_6a0ks"]
+[ext_resource type="Script" path="res://Scripts/Player/CameraFollow.gd" id="1_44thy"]
 [ext_resource type="PackedScene" uid="uid://cyhjsommr73k1" path="res://Scenes/Player/Player.tscn" id="2_xe3yt"]
 [ext_resource type="PackedScene" uid="uid://raffq6dxknjp" path="res://Scenes/Platforms/MovingPlatform.tscn" id="3_tjhwy"]
+[ext_resource type="PackedScene" uid="uid://bps3u4x5kvomw" path="res://Scenes/Traps/Spike.tscn" id="3_r2wj3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_guxkx"]
 texture = ExtResource("1_6a0ks")
@@ -603,6 +606,7 @@ texture = ExtResource("1_6a0ks")
 
 [sub_resource type="TileSet" id="TileSet_q4yun"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Green Grass"
 terrain_set_0/terrain_0/color = Color(0.423529, 0.619608, 0.333333, 1)
@@ -612,6 +616,14 @@ terrain_set_1/terrain_0/color = Color(0.129412, 0.368627, 0.729412, 1)
 sources/0 = SubResource("TileSetAtlasSource_guxkx")
 
 [node name="Main" type="Node2D"]
+
+[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("1_44thy")
+player = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_q4yun")
@@ -647,3 +659,5 @@ position = Vector2(164, 290)
 mode = "manual"
 move_to = Vector2(30, 0)
 speed = 5.0
+[node name="Spike" parent="." instance=ExtResource("3_r2wj3")]
+position = Vector2(317, 329)
